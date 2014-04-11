@@ -439,12 +439,27 @@ function showScore() {
 
     // Set log entry - retrieve first - push - add back in
 
-        // Retrieve the object from storage
+        // D3
         var retrievedObject = localStorage.getItem('scoresLog');
-        var data = JSON.parse(retrievedObject);
+         if(retrievedObject != null){
+            var data = JSON.parse(retrievedObject);
+        } else {
+            var data = [];
+        }
         data.push(score);
-
         localStorage.setItem('scoresLog', JSON.stringify(data));
+
+        // Google
+        var retrievedObject = localStorage.getItem('scoresLogGoogle');
+        if(retrievedObject != null){
+            var dataArray = JSON.parse(retrievedObject);
+        } else {
+            var dataArray = [['Attempt','Score']];
+        }
+        var index = dataArray.length.toString();
+        var scroreArray = [index, score];
+        dataArray.push(scroreArray);
+        localStorage.setItem('scoresLogGoogle', JSON.stringify(dataArray));
 
 
 
