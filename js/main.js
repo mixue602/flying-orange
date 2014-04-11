@@ -437,6 +437,17 @@ function showScore() {
     //remove the big score
     setBigScore(true);
 
+    // Set log entry - retrieve first - push - add back in
+
+        // Retrieve the object from storage
+        var retrievedObject = localStorage.getItem('scoresLog');
+        var data = JSON.parse(retrievedObject);
+        data.push(score);
+
+        localStorage.setItem('scoresLog', JSON.stringify(data));
+
+
+
     //have they beaten their high score?
     if (score > highscore) {
         //yeah!
